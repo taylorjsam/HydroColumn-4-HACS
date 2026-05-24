@@ -1,0 +1,121 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "HydroColumn",
+        "description": "Connect to a HydroColumn-4 controller over local HTTP and Home Assistant's MQTT integration.",
+        "data": {
+          "device_id": "Device ID",
+          "device_ip": "Device IP or hostname",
+          "username": "HTTP username",
+          "password": "HTTP password"
+        },
+        "data_description": {
+          "device_id": "Example: hydrocolumn-a1b2c3",
+          "device_ip": "Leave blank to try the device's .local hostname."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not connect to the HydroColumn HTTP API.",
+      "invalid_auth": "The HydroColumn HTTP username or password was rejected.",
+      "invalid_device_id": "Device ID must look like hydrocolumn-a1b2c3.",
+      "mqtt_unavailable": "Home Assistant's MQTT integration is not loaded. Install and configure MQTT first.",
+      "unknown": "Unexpected response from the HydroColumn controller."
+    },
+    "abort": {
+      "already_configured": "This HydroColumn device is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "HydroColumn options",
+        "description": "Update the local HTTP connection details for this HydroColumn controller.",
+        "data": {
+          "device_ip": "Device IP or hostname",
+          "username": "HTTP username",
+          "password": "HTTP password"
+        },
+        "data_description": {
+          "password": "Leave blank to keep the current password."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not connect to the HydroColumn HTTP API.",
+      "invalid_auth": "The HydroColumn HTTP username or password was rejected.",
+      "mqtt_unavailable": "Home Assistant's MQTT integration is not loaded.",
+      "unknown": "Unexpected response from the HydroColumn controller."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "ec": { "name": "EC" },
+      "ph": { "name": "pH" },
+      "water_temperature": { "name": "Water Temperature" },
+      "air_temperature": { "name": "Air Temperature" },
+      "air_humidity": { "name": "Air Humidity" },
+      "water_level": { "name": "Water Level" },
+      "water_level_pct": { "name": "Water Level (%)" },
+      "dosing_mode_status": { "name": "Dosing Mode" },
+      "solution_remaining_1": { "name": "FloraMicro Remaining" },
+      "solution_remaining_2": { "name": "FloraGro Remaining" },
+      "solution_remaining_3": { "name": "FloraBloom Remaining" },
+      "solution_remaining_4": { "name": "pH Down Remaining" },
+      "solution_remaining_5": { "name": "pH Up Remaining" },
+      "dosing_pump_1_status": { "name": "Pump 1 Status" },
+      "dosing_pump_2_status": { "name": "Pump 2 Status" },
+      "dosing_pump_3_status": { "name": "Pump 3 Status" },
+      "dosing_pump_4_status": { "name": "Pump 4 Status" },
+      "dosing_pump_5_status": { "name": "Pump 5 Status" }
+    },
+    "binary_sensor": {
+      "flood_leak": { "name": "Flood / Leak" },
+      "fault_active": { "name": "Fault Active" },
+      "online": { "name": "Online" },
+      "light_relay_output": { "name": "Light Relay Output" },
+      "circulation_relay_output": { "name": "Circulation Relay Output" },
+      "low_water": { "name": "Low Water" },
+      "ec_out_of_range": { "name": "EC Out of Range" },
+      "ph_out_of_range": { "name": "pH Out of Range" },
+      "low_solution_1": { "name": "Low FloraMicro" },
+      "low_solution_2": { "name": "Low FloraGro" },
+      "low_solution_3": { "name": "Low FloraBloom" },
+      "low_solution_4": { "name": "Low pH Down" },
+      "low_solution_5": { "name": "Low pH Up" }
+    },
+    "switch": {
+      "auto_nutrient_dosing": { "name": "Auto Nutrient Dosing" },
+      "auto_ph_dosing": { "name": "Auto pH Dosing" }
+    },
+    "number": {
+      "ec_target": { "name": "EC Target" },
+      "ph_target_low": { "name": "pH Target Low" },
+      "ph_target_high": { "name": "pH Target High" }
+    },
+    "select": {
+      "dosing_mode": { "name": "Dosing Mode" }
+    },
+    "button": {
+      "reset_fault": { "name": "Reset Fault" },
+      "export_dashboard": { "name": "Export Dashboard" },
+      "refill_solution_1": { "name": "Refill FloraMicro" },
+      "refill_solution_2": { "name": "Refill FloraGro" },
+      "refill_solution_3": { "name": "Refill FloraBloom" },
+      "refill_solution_4": { "name": "Refill pH Down" },
+      "refill_solution_5": { "name": "Refill pH Up" }
+    }
+  },
+  "exceptions": {
+    "unknown_device": {
+      "message": "No HydroColumn device is configured with device ID {device_id}."
+    },
+    "flood_active": {
+      "message": "HydroColumn {device_id} has an active flood/leak fault; manual dosing is blocked."
+    },
+    "device_offline": {
+      "message": "HydroColumn {device_id} is offline; manual dosing is blocked."
+    }
+  }
+}

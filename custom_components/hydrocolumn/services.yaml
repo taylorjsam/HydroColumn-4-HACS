@@ -1,0 +1,29 @@
+manual_dose:
+  name: Manual dose
+  description: Run one HydroColumn dosing pump for a capped duration.
+  fields:
+    device_id:
+      name: Device ID
+      description: Firmware device ID, for example hydrocolumn-a1b2c3.
+      required: true
+      selector:
+        text:
+    pump:
+      name: Pump
+      description: Pump channel to run.
+      required: true
+      selector:
+        number:
+          min: 1
+          max: 5
+          mode: box
+    seconds:
+      name: Seconds
+      description: Dose duration. The integration and firmware cap this at 30 seconds.
+      required: true
+      selector:
+        number:
+          min: 1
+          max: 30
+          unit_of_measurement: s
+          mode: box

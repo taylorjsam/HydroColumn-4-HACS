@@ -1,0 +1,40 @@
+title: HydroColumn
+views:
+  - title: Overview
+    path: hydrocolumn
+    icon: mdi:sprout
+    type: masonry
+    cards:
+      - type: gauge
+        name: EC
+        entity: sensor.hydrocolumn_ec
+        min: 0
+        max: 3.5
+        needle: true
+        severity:
+          green: 1.2
+          yellow: 2.3
+          red: 3.0
+      - type: gauge
+        name: pH
+        entity: sensor.hydrocolumn_ph
+        min: 4.5
+        max: 7.5
+        needle: true
+        severity:
+          green: 5.8
+          yellow: 6.5
+          red: 7.1
+      - type: entities
+        title: Safety
+        entities:
+          - binary_sensor.hydrocolumn_flood_leak
+          - binary_sensor.hydrocolumn_fault_active
+          - binary_sensor.hydrocolumn_low_water
+      - type: entities
+        title: Config
+        entities:
+          - number.hydrocolumn_ec_target
+          - number.hydrocolumn_ph_target_low
+          - number.hydrocolumn_ph_target_high
+          - select.hydrocolumn_dosing_mode

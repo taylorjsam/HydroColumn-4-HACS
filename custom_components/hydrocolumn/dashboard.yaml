@@ -1,0 +1,11 @@
+title: HydroColumn
+views:
+  - title: HydroColumn
+    path: hydrocolumn
+    icon: mdi:sprout
+    type: masonry
+    cards:
+      - type: markdown
+        content: >-
+          Use the HydroColumn Export Dashboard button after setup to generate a
+          populated dashboard with live entity IDs under /config/dashboards.
